@@ -1,0 +1,42 @@
+name: Bug report
+description: Something produces wrong output, throws unexpectedly or does not work as documented.
+labels: [bug, needs-triage]
+body:
+  - type: input
+    id: package
+    attributes:
+      label: Package and version
+      placeholder: "@kurdish-dev-toolkit/core 0.1.0"
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproduction
+      description: The smallest code that shows the problem. Write invisible characters as escapes (‌, ‏).
+      render: ts
+      placeholder: |
+        import { formatNumber } from '@kurdish-dev-toolkit/core';
+        formatNumber(-12);
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual output
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected output
+      description: If the expected output follows a Kurdish writing convention, please say where it is used.
+    validations:
+      required: true
+  - type: input
+    id: runtime
+    attributes:
+      label: Runtime
+      placeholder: "Node 22.11 / Chrome 131 / Safari 18, OS"
+    validations:
+      required: true

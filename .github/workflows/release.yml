@@ -1,0 +1,54 @@
+# Publishes @kurdish-dev-toolkit/core to npm when a tag like `core-v0.1.0` is pushed.
+# The full CI suite must pass first. See docs/releasing.md.
+#
+# One-time setup:
+#   1. Create an npm automation token and save it as the repository secret NPM_TOKEN
+#      (or configure npm "trusted publishing" for this repository and workflow).
+#   2. Create a GitHub environment named "npm" and add required reviewers if you want a manual
+#      approval step before anything is published.
+name: Release
+
+on:
+  push:
+    tags: ['core-v*']
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    uses: ./.github/workflows/ci.yml
+
+  publish:
+    needs: ci
+    runs-on: ubuntu-latest
+    environment: npm
+    permissions:
+      contents: write # create the GitHub release
+      id-token: write # npm provenance
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          registry-url: https://registry.npmjs.org
+      - run: npm ci
+      - run: npm run build
+      - name: Verify tag, version, changelog, licenses and exports
+        run: node scripts/verify-release.mjs "$GITHUB_REF_NAME" --notes release-notes.md
+      - name: Publish to npm
+        working-directory: packages/core
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if [[ "$VERSION" == *-* ]]; then TAG=next; else TAG=latest; fi
+          npm publish --provenance --access public --tag "$TAG"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Create GitHub release
+        run: |
+          PRERELEASE=""
+          if [[ "$GITHUB_REF_NAME" == *-*-* ]]; then PRERELEASE="--prerelease"; fi
+          gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --notes-file release-notes.md $PRERELEASE
+        env:
+          GH_TOKEN: ${{ github.token }}

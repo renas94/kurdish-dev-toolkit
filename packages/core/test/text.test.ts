@@ -79,6 +79,9 @@ describe('normalize', () => {
     expect(() => normalize('x', { digits: 'roman' as never })).toThrowError(/numeral system/);
     expect(() => normalize(42 as never)).toThrowError();
   });
+  it('keeps non-Arabic combining marks when removing diacritics', () => {
+    expect(normalize('éبَ', { unicodeNfc: false, diacritics: true })).toBe('éب');
+  });
   it('removeDiacritics only removes marks', () => {
     expect(removeDiacritics('كَتَبَ')).toBe('كتب');
   });

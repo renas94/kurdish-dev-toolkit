@@ -3,6 +3,16 @@
   "version": "0.1.0-alpha.0",
   "description": "Kurdish Sorani text, RTL, number, date, currency and i18n utilities for JavaScript and TypeScript.",
   "license": "MIT",
+  "author": "Kurdish Developer Toolkit contributors",
+  "homepage": "https://github.com/renas94/kurdish-dev-toolkit/tree/main/packages/core#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renas94/kurdish-dev-toolkit.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/renas94/kurdish-dev-toolkit/issues"
+  },
   "type": "module",
   "sideEffects": false,
   "engines": {
@@ -58,14 +68,27 @@
     "numerals",
     "iqd"
   ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
-    "docs": "typedoc"
+    "test:coverage": "vitest run --coverage",
+    "test:browser": "vitest run -c vitest.browser.config.ts",
+    "lint:package": "publint --strict && attw --pack . --profile esm-only",
+    "docs": "typedoc",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
     "@types/node": "^22.20.5",
+    "@vitest/browser": "^2.1.9",
+    "@vitest/coverage-v8": "^2.1.9",
+    "playwright": "^1.49.1",
+    "publint": "^0.2.12",
     "typedoc": "^0.26.11",
     "typescript": "^5.6.3",
     "vitest": "^2.1.9"

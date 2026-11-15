@@ -1,12 +1,21 @@
 // Runs the language-neutral fixtures in /tests/fixtures. The PHP package will run the same files.
-import { readFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
+// JSON is imported (not read with node:fs) so the same tests also run in browsers.
 import { describe, expect, it } from 'vitest';
 import { formatCurrency, formatDate, formatNumber, KdtError, normalize, parseNumber } from '../src/index.js';
+import currencyFixture from '../../../tests/fixtures/currency.json';
+import datesFixture from '../../../tests/fixtures/dates.json';
+import normalizeFixture from '../../../tests/fixtures/normalize.json';
+import numbersFixture from '../../../tests/fixtures/numbers.json';
+
+const FIXTURES: Record<string, unknown> = {
+  currency: currencyFixture,
+  dates: datesFixture,
+  normalize: normalizeFixture,
+  numbers: numbersFixture,
+};
 
 function fixture<T>(name: string): T {
-  const url = new URL(`../../../tests/fixtures/${name}.json`, import.meta.url);
-  return JSON.parse(readFileSync(fileURLToPath(url), 'utf8')) as T;
+  return FIXTURES[name] as T;
 }
 
 type Opts = Record<string, unknown>;

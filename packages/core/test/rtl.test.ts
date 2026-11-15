@@ -102,6 +102,12 @@ describe('html helpers', () => {
     expect(htmlDirAttributes({ text: 'Hello' })).toEqual({ dir: 'ltr' });
     expect(htmlDirAttributes({ text: 'سڵاو' })).toEqual({ dir: 'rtl' });
     expect(htmlDirAttributes({})).toEqual({ dir: 'auto' });
+    expect(htmlDirAttributes({ lang: 'ckb-Arab-IQ' })).toEqual({ dir: 'rtl', lang: 'ckb-Arab-IQ' });
+  });
+  it('rejects language tags that could inject HTML', () => {
+    for (const lang of ['ckb" onload="x', '<script>', '', 'c', 'ckb-']) {
+      expect(() => htmlDirAttributes({ lang })).toThrowError(/Invalid language tag/);
+    }
   });
   it('mirrorSide', () => {
     expect(mirrorSide('left', 'rtl')).toBe('right');

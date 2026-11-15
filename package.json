@@ -12,6 +12,12 @@
   "scripts": {
     "build": "npm run build --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
-    "typecheck": "npm run typecheck --workspaces --if-present"
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test:coverage": "npm run test:coverage --workspaces --if-present",
+    "test:browser": "npm run test:browser --workspaces --if-present",
+    "lint:package": "npm run lint:package --workspaces --if-present",
+    "docs": "npm run docs --workspaces --if-present",
+    "smoke": "node scripts/smoke-test.mjs",
+    "verify-release": "node scripts/verify-release.mjs"
   }
 }
