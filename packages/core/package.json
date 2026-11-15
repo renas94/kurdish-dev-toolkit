@@ -1,0 +1,73 @@
+{
+  "name": "@kurdish-dev-toolkit/core",
+  "version": "0.1.0-alpha.0",
+  "description": "Kurdish Sorani text, RTL, number, date, currency and i18n utilities for JavaScript and TypeScript.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./text": {
+      "types": "./dist/text/index.d.ts",
+      "default": "./dist/text/index.js"
+    },
+    "./rtl": {
+      "types": "./dist/rtl/index.d.ts",
+      "default": "./dist/rtl/index.js"
+    },
+    "./numbers": {
+      "types": "./dist/numbers/index.d.ts",
+      "default": "./dist/numbers/index.js"
+    },
+    "./dates": {
+      "types": "./dist/dates/index.d.ts",
+      "default": "./dist/dates/index.js"
+    },
+    "./currency": {
+      "types": "./dist/currency/index.d.ts",
+      "default": "./dist/currency/index.js"
+    },
+    "./i18n": {
+      "types": "./dist/i18n/index.d.ts",
+      "default": "./dist/i18n/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "kurdish",
+    "sorani",
+    "ckb",
+    "rtl",
+    "bidi",
+    "i18n",
+    "localization",
+    "unicode",
+    "numerals",
+    "iqd"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "docs": "typedoc"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "typedoc": "^0.26.11",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.9"
+  }
+}

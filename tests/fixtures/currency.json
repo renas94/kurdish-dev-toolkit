@@ -1,0 +1,16 @@
+{
+  "description": "Shared currency formatting cases. \\u00A0 is the no-break space placed between number and symbol.",
+  "cases": [
+    { "amount": 1250000, "expected": "١٬٢٥٠٬٠٠٠ د.ع" },
+    { "amount": 1250000, "options": { "display": "name" }, "expected": "١٬٢٥٠٬٠٠٠ دینار" },
+    { "amount": 1250000, "options": { "display": "code", "numerals": "latn" }, "expected": "1,250,000 IQD" },
+    { "amount": 1250000, "options": { "display": "none" }, "expected": "١٬٢٥٠٬٠٠٠" },
+    { "amount": 1250.6, "expected": "١٬٢٥١ د.ع" },
+    { "amount": -5000, "expected": "-٥٬٠٠٠ د.ع" },
+    { "amount": 19.9, "options": { "currency": "USD", "numerals": "latn" }, "expected": "19.90 $" },
+    { "amount": 19.9, "options": { "currency": "usd", "numerals": "latn", "position": "before", "separator": "" }, "expected": "$19.90" },
+    { "amount": "1999.995", "options": { "currency": "USD" }, "expected": "٢٬٠٠٠٫٠٠ $" },
+    { "amount": 7.5, "options": { "currency": "EUR", "display": "name" }, "expected": "٧٫٥٠ یۆرۆ" },
+    { "amount": 250, "options": { "fractionDigits": 3 }, "expected": "٢٥٠٫٠٠٠ د.ع" }
+  ]
+}
