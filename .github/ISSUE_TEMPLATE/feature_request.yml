@@ -1,0 +1,27 @@
+name: Feature request
+description: Suggest a new utility, option or integration.
+labels: [enhancement, needs-triage]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve?
+      description: Describe the real application need. A concrete example helps most.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed API or behaviour
+      render: ts
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Existing tools or workarounds
+      description: Does KLPT, Intl or another library already cover this? KDT avoids duplicating existing projects.
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Contribution
+      options:
+        - label: I would like to implement this myself

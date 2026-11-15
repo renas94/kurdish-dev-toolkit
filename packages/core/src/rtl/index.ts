@@ -174,7 +174,10 @@ export function splitByDirection(text: string): DirectionRun[] {
 
 /** Options for {@link htmlDirAttributes}. */
 export interface HtmlDirOptions {
-  /** BCP 47 language tag. When given, the direction comes from it. */
+  /**
+   * BCP 47 language tag. When given, the direction comes from it. Throws `INVALID_OPTION` if it
+   * contains anything other than letters, digits and `-`/`_` separators.
+   */
   readonly lang?: string;
   /** Text to detect the direction from when `lang` is not given. */
   readonly text?: string;
@@ -197,6 +200,10 @@ export interface HtmlDirAttributes {
  */
 export function htmlDirAttributes(options: HtmlDirOptions): HtmlDirAttributes {
   if (options.lang !== undefined) {
+    // The value is echoed into HTML, so only allow characters that can appear in a language tag.
+    if (!/^[A-Za-z]{2,8}(?:[-_][A-Za-z0-9]{1,8})*$/.test(options.lang)) {
+      throw new KdtError('INVALID_OPTION', `Invalid language tag: ${JSON.stringify(options.lang)}`);
+    }
     return { dir: localeDirection(options.lang), lang: options.lang };
   }
   if (options.text !== undefined) {

@@ -99,6 +99,15 @@ describe('dates', () => {
     expect(formatTime(d, { timeZone: 'UTC', seconds: true, numerals: 'latn' })).toBe('15:05:09');
     expect(formatTime(d, { timeZone: 'Asia/Baghdad', numerals: 'latn' })).toBe('18:05');
   });
+  it('supports single-letter tokens', () => {
+    expect(formatDate('2026-03-05T04:03:02Z', { timeZone: 'UTC', format: 'd/M/yy H:m:s', numerals: 'latn' })).toBe('5/3/26 4:3:2');
+  });
+  it('uses astronomical year numbering for BC dates', () => {
+    const d = new Date(Date.UTC(2000, 0, 1));
+    d.setUTCFullYear(-44);
+    expect(getDateParts(d, { timeZone: 'UTC' }).year).toBe(-44);
+    expect(formatDate(d, { timeZone: 'UTC', format: 'yyyy', numerals: 'latn' })).toBe('-0044');
+  });
   it('handles midnight as hour 0', () => {
     expect(formatTime('2026-03-21T00:00:00Z', { timeZone: 'UTC', numerals: 'latn' })).toBe('00:00');
   });

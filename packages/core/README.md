@@ -9,7 +9,7 @@ normalization and validation, RTL/bidi helpers, numerals, dates, currency and i1
 * Input is never normalized implicitly, and calendars are never converted silently.
 
 > **Status: `0.1.0-alpha.0`, not yet published to npm.** The API may change before 1.0.
-> Tested on Node.js 24 (Windows). CI coverage for Node 20/22 and browsers comes in phase 2.
+> Tested with Node.js 20, 22 and 24, and in Chromium, Firefox and WebKit.
 
 ## Install
 

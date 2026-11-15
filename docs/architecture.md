@@ -67,15 +67,18 @@ kurdish-dev-toolkit/
   PHP port will be tested against the same files.
 * Unicode edge cases: ZWNJ, combining marks, tatweel, bidi controls, astral characters (emoji), and
   mixed scripts.
-* Tests are run in CI on Node 20, 22 and 24 (CI is set up in phase 2). Browser support is claimed only
-  after browser tests run.
+* CI runs the tests on Linux, Windows and macOS with Node 20, 22 and 24, and in Chromium, Firefox and
+  WebKit (Vitest browser mode with Playwright).
+* Performance tests guard against regular-expression backtracking on large or hostile input.
+* Package checks: publint, are-the-types-wrong (ESM-only profile), and a smoke test that installs the
+  packed tarball in a clean project and type-checks a strict TypeScript consumer.
 
 ## Roadmap
 
 | Phase | Deliverable | Status |
 |---|---|---|
-| 1 | TypeScript core: text, rtl, numbers, dates, currency, i18n | in progress |
-| 2 | npm readiness: CI matrix, TypeDoc, changelog, release workflow, community files | planned |
+| 1 | TypeScript core: text, rtl, numbers, dates, currency, i18n | done |
+| 2 | npm readiness: CI matrix, TypeDoc, changelog, release workflow, community files | done (CI not yet run on GitHub) |
 | 3 | PHP 8.2+ Composer package using the shared fixtures | planned |
 | 4 | Laravel service provider, config, translations, Blade helpers | planned |
 | 5 | React hooks (`useDirection`, `useTranslator`, `useFormatters`), `<Bidi>` component | planned |

@@ -1,0 +1,14 @@
+[
+  { "name": "good first issue", "color": "7057ff", "description": "Small, well-defined task for new contributors" },
+  { "name": "help wanted", "color": "008672", "description": "Maintainers would welcome a contribution" },
+  { "name": "bug", "color": "d73a4a", "description": "Wrong output or unexpected error" },
+  { "name": "enhancement", "color": "a2eeef", "description": "New feature or improvement" },
+  { "name": "documentation", "color": "0075ca", "description": "Docs, examples, README" },
+  { "name": "kurdish-language", "color": "f9a825", "description": "Spelling, terminology, translations, language data" },
+  { "name": "unicode", "color": "5319e7", "description": "Unicode, normalization, encoding" },
+  { "name": "rtl", "color": "1d76db", "description": "Right-to-left and bidirectional text" },
+  { "name": "needs-triage", "color": "ededed", "description": "Not yet reviewed by a maintainer" },
+  { "name": "breaking-change", "color": "b60205", "description": "Changes public API behaviour" },
+  { "name": "dependencies", "color": "0366d6", "description": "Dependency updates" },
+  { "name": "package: core", "color": "c5def5", "description": "@kurdish-dev-toolkit/core" }
+]
