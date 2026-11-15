@@ -1,0 +1,29 @@
+{
+  "description": "Shared normalization cases for every KDT implementation (JS, PHP). Invisible characters are written as \\u escapes.",
+  "cases": [
+    { "name": "Arabic yeh and kaf", "input": "كوردي", "expected": "کوردی" },
+    { "name": "Alef maksura", "input": "زمانى كوردى", "expected": "زمانی کوردی" },
+    { "name": "heh + ZWNJ is legacy ae", "input": "مه‌لا", "expected": "مەلا" },
+    { "name": "teh marbuta becomes ae", "input": "كتێبخانة", "expected": "کتێبخانە" },
+    { "name": "heh doachashmee becomes heh by default", "input": "ھەولێر", "expected": "هەولێر" },
+    { "name": "h option doachashmee", "input": "هەولێر شاه", "options": { "h": "doachashmee" }, "expected": "ھەولێر شاه" },
+    { "name": "h option false keeps both", "input": "ھەولێر", "options": { "h": false }, "expected": "ھەولێر" },
+    { "name": "reh variant", "input": "ڒێگا", "expected": "ڕێگا" },
+    { "name": "initial reh off by default", "input": "رۆژ باش", "expected": "رۆژ باش" },
+    { "name": "initial reh on", "input": "رۆژ و بەرز", "options": { "initialReh": true }, "expected": "ڕۆژ و بەرز" },
+    { "name": "final heh off by default", "input": "شاره", "expected": "شاره" },
+    { "name": "final heh on", "input": "شاره گەوره.", "options": { "finalHeh": true }, "expected": "شارە گەورە." },
+    { "name": "tatweel removed", "input": "سـڵـاو", "expected": "سڵاو" },
+    { "name": "diacritics kept by default", "input": "سَلام", "expected": "سَلام" },
+    { "name": "diacritics removed on request", "input": "سَلامٌ", "options": { "diacritics": true }, "expected": "سلام" },
+    { "name": "NFC composes yeh + hamza above before the yeh rule", "input": "ئەو", "expected": "ئەو" },
+    { "name": "digits unchanged by default", "input": "ساڵی 2026", "expected": "ساڵی 2026" },
+    { "name": "digits to latn", "input": "٢٠٢٦ و ۱۴۰۵", "options": { "digits": "latn" }, "expected": "2026 و 1405" },
+    { "name": "digits to arab", "input": "0750 123 4567", "options": { "digits": "arab" }, "expected": "٠٧٥٠ ١٢٣ ٤٥٦٧" },
+    { "name": "bidi controls kept by default", "input": "‏سڵاو", "expected": "‏سڵاو" },
+    { "name": "bidi controls removed on request", "input": "‏سڵاو⁦abc⁩", "options": { "bidiControls": true }, "expected": "سڵاوabc" },
+    { "name": "meaningful ZWNJ is kept", "input": "دەست‌پێکردن", "expected": "دەست‌پێکردن" },
+    { "name": "Latin and emoji untouched", "input": "Hello 👋 كورد", "expected": "Hello 👋 کورد" },
+    { "name": "already-correct Sorani is unchanged", "input": "زمانی کوردی زمانێکی جوانە", "expected": "زمانی کوردی زمانێکی جوانە" }
+  ]
+}

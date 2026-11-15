@@ -1,0 +1,19 @@
+{
+  "description": "Shared Gregorian date formatting cases. Time zones are always explicit.",
+  "cases": [
+    { "date": "2026-03-21T09:05:07Z", "timeZone": "UTC", "format": "full", "expected": "شەممە، ٢١ی ئازاری ٢٠٢٦" },
+    { "date": "2026-03-21T09:05:07Z", "timeZone": "UTC", "format": "long", "expected": "٢١ی ئازاری ٢٠٢٦" },
+    { "date": "2026-03-21T09:05:07Z", "timeZone": "UTC", "format": "medium", "expected": "٢١ ئازار ٢٠٢٦" },
+    { "date": "2026-03-21T09:05:07Z", "timeZone": "UTC", "format": "short", "expected": "٢١/٠٣/٢٠٢٦" },
+    { "date": "2026-03-21T09:05:07Z", "timeZone": "UTC", "format": "yyyy-MM-dd HH:mm:ss", "numerals": "latn", "expected": "2026-03-21 09:05:07" },
+    { "date": "2026-12-31T22:30:00Z", "timeZone": "Asia/Baghdad", "format": "full", "expected": "هەینی، ١ی کانوونی دووەمی ٢٠٢٧" },
+    { "date": "2026-12-31T22:30:00Z", "timeZone": "UTC", "format": "full", "expected": "پێنجشەممە، ٣١ی کانوونی یەکەمی ٢٠٢٦" },
+    { "date": "2026-07-14T15:00:00Z", "timeZone": "UTC", "format": "EEEE d MMMM", "expected": "سێشەممە ١٤ تەمووز" },
+    { "date": "2026-09-01T00:00:00Z", "timeZone": "UTC", "format": "MMMM yy", "numerals": "arabext", "expected": "ئەیلوول ۲۶" },
+    { "date": "2026-03-21T15:05:00Z", "timeZone": "UTC", "format": "h:mm a", "expected": "٣:٠٥ د.ن" },
+    { "date": "2026-03-21T00:30:00Z", "timeZone": "UTC", "format": "h:mm aaaa", "expected": "١٢:٣٠ بەر لە نیوەڕۆ" },
+    { "date": "2026-03-21T12:00:00Z", "timeZone": "UTC", "format": "hh:mm a", "expected": "١٢:٠٠ د.ن" },
+    { "date": "2026-03-21T09:05:07Z", "timeZone": "UTC", "format": "'کاتژمێر' HH:mm", "expected": "کاتژمێر ٠٩:٠٥" },
+    { "date": "2026-03-21T09:05:07Z", "timeZone": "UTC", "format": "d''M", "numerals": "latn", "expected": "21'3" }
+  ]
+}

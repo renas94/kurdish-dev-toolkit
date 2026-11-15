@@ -1,0 +1,34 @@
+{
+  "description": "Shared number formatting and parsing cases. Values given as strings are exact decimal inputs.",
+  "format": [
+    { "value": 1234567.891, "expected": "١٬٢٣٤٬٥٦٧٫٨٩١" },
+    { "value": 0, "expected": "٠" },
+    { "value": -1500, "options": { "numerals": "latn" }, "expected": "-1,500" },
+    { "value": 0.5, "options": { "minimumFractionDigits": 2 }, "expected": "٠٫٥٠" },
+    { "value": 1234.5, "options": { "numerals": "arabext" }, "expected": "۱٬۲۳۴٫۵" },
+    { "value": "12345678901234567890.123", "expected": "١٢٬٣٤٥٬٦٧٨٬٩٠١٬٢٣٤٬٥٦٧٬٨٩٠٫١٢٣" },
+    { "value": -0.0001, "expected": "٠" },
+    { "value": 2.5, "options": { "maximumFractionDigits": 0 }, "expected": "٣" },
+    { "value": -2.5, "options": { "maximumFractionDigits": 0 }, "expected": "-٣" },
+    { "value": -12, "options": { "bidiMark": "alm" }, "expected": "؜-١٢" },
+    { "value": 1234567, "options": { "groupSeparator": "" }, "expected": "١٢٣٤٥٦٧" },
+    { "value": 1234567.5, "options": { "numerals": "latn", "groupSeparator": " ", "decimalSeparator": "," }, "expected": "1 234 567,5" },
+    { "value": 999, "expected": "٩٩٩" },
+    { "value": 1000, "expected": "١٬٠٠٠" }
+  ],
+  "parse": [
+    { "input": "١٬٢٣٤٫٥", "expected": 1234.5 },
+    { "input": "۱۲۳٤", "expected": 1234 },
+    { "input": "1,234.5", "expected": 1234.5 },
+    { "input": "1.234,5", "options": { "decimalSeparator": "," }, "expected": 1234.5 },
+    { "input": "-٥٠", "expected": -50 },
+    { "input": "؜-١٢", "expected": -12 },
+    { "input": " 1 234 ", "expected": 1234 },
+    { "input": "+3", "expected": 3 },
+    { "input": "−7", "expected": -7 },
+    { "input": ".5", "expected": 0.5 },
+    { "input": "٠", "expected": 0 },
+    { "input": "-0", "expected": 0 }
+  ],
+  "parseErrors": ["", "abc", "1,23", "1.2.3", "١٫", "--1", "12a", "٫", "1,2345"]
+}
