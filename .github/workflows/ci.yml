@@ -43,7 +43,8 @@ jobs:
 
   browsers:
     name: Browser tests (${{ matrix.browser }})
-    runs-on: ubuntu-latest
+    # Pinned: Playwright 1.49 cannot install WebKit deps on Ubuntu 26.04 (ubuntu-latest since 2026-10-19).
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
